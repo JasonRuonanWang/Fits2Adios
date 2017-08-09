@@ -15,7 +15,7 @@ adios = adios2.ADIOS(comm, adios2.DebugON)
 bpIO = adios.DeclareIO("NPTypes")
 var = bpIO.DefineVariable("image", list(global_dim), list(offset), list(local_dim))
 
-bpFileWriter = bpIO.Open("a", adios2.OpenModeWrite)
+bpFileWriter = bpIO.Open(sys.argv[1] + "/image", adios2.OpenModeWrite)
 
 for root, dirs, files in os.walk(sys.argv[1]):
     for i in files:
