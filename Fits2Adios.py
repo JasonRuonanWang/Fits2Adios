@@ -13,6 +13,7 @@ comm = MPI.COMM_WORLD
 adios = adios2.ADIOS(comm, adios2.DebugON)
 
 bpIO = adios.DeclareIO("NPTypes")
+bpIO.SetParameters( Threads="2", ProfileUnits="Milliseconds" )
 var = bpIO.DefineVariable("image", list(global_dim), list(offset), list(local_dim))
 
 bpFileWriter = bpIO.Open(sys.argv[1] + "/image", adios2.OpenModeWrite)
